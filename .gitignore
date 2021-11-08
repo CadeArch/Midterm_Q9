@@ -4,3 +4,10 @@ myPics
 yolo.h5
 yolov3.weights
 ImageRecognition.py
+dandilionDataset.zip
+dandilionDataset
+data
+data1
+test_img.npy
+test_labels.npy
+cnnTrainedOnNewData.h5

@@ -9,6 +9,8 @@ from keras.models import load_model
 import os
 import numpy as np
 import cv2
+
+import PartC_TransferLearning
 from HelpersToPartB import *
 
 
@@ -101,6 +103,9 @@ def partB():
 
         print("classified " + imageName + " as " , end="")
         print(v_labels)
+
+def partC():
+    PartC_TransferLearning.main()
 
 
 def main():
