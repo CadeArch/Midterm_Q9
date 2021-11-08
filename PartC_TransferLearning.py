@@ -35,8 +35,10 @@ def images_to_array(dataset_dir, image_size):
 
                 img = keras.preprocessing.image.load_img(image_file_dir, target_size=(image_size, image_size))
                 img_array = keras.preprocessing.image.img_to_array(img)
+                img_array = np.expand_dims(img_array, axis=0)
 
-                img_array = img_array/255.0
+                img_array = preprocess_input(img_array)
+                # img_array = img_array/255.0
 
                 # img_array.shape
                 # # Adding the fouth dimension, for number of images
@@ -49,33 +51,6 @@ def images_to_array(dataset_dir, image_size):
     dataset_labels = numpy.array(dataset_labels)
     return dataset_array, dataset_labels
 
-
-def predictBaseModel(test_images, test_labels, model, show=False):
-
-    # this will show the images being predicted
-    if show:
-        for y in test_images[:]:
-            img = array_to_img(y)
-            img.show()
-
-    print("Predictions: ", end="")
-
-    # index into the test images array to choose which images to predict
-    x = preprocess_input(test_images)
-
-    predictions = model.predict(x)
-    print(decode_predictions(predictions, top=1))
-    preds = decode_predictions(predictions, top=1)
-    for x in preds:
-        for y in x:
-            class_name = y[0]
-            class_description = y[1]
-            score = y[2]
-            print("Predictions (className ClassDescription, percentSure) -- ", class_name, class_description, score*100)
-
-
-    classLabels = ["dandelion"]
-    print(classLabels)
 
 def predict(test_images, test_labels, model,show=False):
     predictStart = 0
@@ -222,31 +197,50 @@ def loadBaseModelAndTrain(train, showImages):
         loadInTrainedModel(model, showImages)
 
 def runBaseModel():
-    img_rows = 224
-    img_col = 224
-    model = VGG16(weights='imagenet',
-                       include_top=True,
-                       input_shape=(img_rows, img_col, 3))
-
-    # Freeze base model
-    model.trainable = False
-
-    model.compile(loss="categorical_crossentropy", metrics=['acc'])
+    model = VGG16(weights='imagenet')
 
     directory = Path(
         "C:/Users/Cade Rasmussen/Documents/USU_Fall_2021/CS_5510_robot_intelligence/Assignments/Exam_Q9/data/test")
-    print("ran predict base model")
 
     test_images, test_labels = images_to_array(directory, 224)
 
     predictBaseModel(test_images, test_labels, model)
 
+
+def predictBaseModel(test_images, test_labels, model, show=False):
+
+    # this will show the images being predicted
+    if show:
+        for y in test_images[:]:
+            img = array_to_img(y)
+            img.show()
+
+    # print("Predictions - (class name, class description, class percentage): ", end="")
+
+    vggThinks = []
+    for x in test_images:
+        prediction = model.predict(x)
+        preds = decode_predictions(prediction, top=1)
+        # print(preds)
+        for x in preds:
+            for img in x:
+                class_name = img[0]
+                class_description = img[1]
+                score = img[2]
+                vggThinks.append(class_description)
+                print("Predictions (className ClassDescription, percentSure) -- ", class_name, class_description, score*100)
+
+
+    classLabels = ["dandelion", "dandelion", "matchstick"]
+    print("Predictions: ", vggThinks)
+    print("Actual: ", classLabels)
+
 def main():
     train = False
     showImages = False
 
-    loadBaseModelAndTrain(train, showImages)
-    # runBaseModel()
+    # loadBaseModelAndTrain(train, showImages)
+    runBaseModel()
 
 
 if __name__ == "__main__":
