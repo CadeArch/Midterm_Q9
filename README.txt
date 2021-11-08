@@ -10,6 +10,7 @@ help to creat YOLO model from yolov3.weights file - https://stackoverflow.com/qu
 
 help with transfer learning - https://www.learndatasci.com/tutorials/hands-on-transfer-learning-keras/
 help using vgg16 decode method - https://docs.w3cub.com/tensorflow~2.3/keras/applications/inception_v3/decode_predictions
+                                - https://towardsdatascience.com/how-to-use-a-pre-trained-model-vgg-for-image-classification-8dd7c4a4a517
 
 # I added the coffee mug as a gut check that my classifier was working properly
 part a) after running main.py program executes and prints the following
