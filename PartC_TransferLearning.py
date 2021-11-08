@@ -53,7 +53,7 @@ def images_to_array(dataset_dir, image_size):
 
 
 def predict(test_images, test_labels, model,show=False):
-    predictStart = 0
+    predictStart = 900
     predictEnd = 1000
     print("images read in: ", len(test_images))
     # this will show the images being predicted
@@ -87,7 +87,7 @@ def predict(test_images, test_labels, model,show=False):
     print(classLabels)
 
 
-def loadInTrainedModel(model, showImages):
+def loadInTrainedModel(model, showImages, imgSize):
 
     # Load the model from disk later using:
     model.load_weights('cnnTrainedOnNewData.h5')
@@ -95,7 +95,7 @@ def loadInTrainedModel(model, showImages):
 
     directory = "data1/test"
 
-    resizeTo = 224
+    resizeTo = imgSize
 
     # print("saving images to array")
     # test_images, test_labels = images_to_array(directory, resizeTo)
@@ -107,10 +107,10 @@ def loadInTrainedModel(model, showImages):
     predict(test_images, test_labels, model, show=showImages)
 
 
-def loadBaseModelAndTrain(train, showImages):
+def loadBaseModelAndTrain(train, showImages, imgSize1):
 
-    img_rows = 224
-    img_col = 224
+    img_rows = imgSize1
+    img_col = imgSize1
     base_model = VGG16(weights='imagenet',
                        include_top=False,
                        input_shape=(img_rows, img_col, 3))
@@ -140,7 +140,7 @@ def loadBaseModelAndTrain(train, showImages):
     if train:
         datagen = ImageDataGenerator(rescale=1. / 225)
 
-        imgSize = 224
+        imgSize = imgSize1
 
         directory = 'C:/Users/Cade Rasmussen/Documents/USU_Fall_2021/CS_5510_robot_intelligence/Assignments/Exam_Q9/data1'
 
@@ -191,10 +191,10 @@ def loadBaseModelAndTrain(train, showImages):
         model.save_weights('cnnTrainedOnNewData.h5')
         print("DONE")
 
-        loadInTrainedModel(model, showImages)
+        loadInTrainedModel(model, showImages, imgSize1)
 
     else:
-        loadInTrainedModel(model, showImages)
+        loadInTrainedModel(model, showImages, imgSize1)
 
 def runBaseModel():
     model = VGG16(weights='imagenet')
@@ -238,8 +238,9 @@ def predictBaseModel(test_images, test_labels, model, show=False):
 def main():
     train = False
     showImages = False
+    imgSize = 224
 
-    # loadBaseModelAndTrain(train, showImages)
+    # loadBaseModelAndTrain(train, showImages, imgSize)
     runBaseModel()
 
 

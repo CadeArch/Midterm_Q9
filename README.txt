@@ -75,11 +75,14 @@ as you can see it is a bit limited in what it identifies. Sometimes it doesnt id
 
 part c)
 BASE MODEL CLASSIFIES 2 IMAGES OF DANDELIONS AS FOLLOWS:
-** images used dandelion.jpg and dandi2.jpg
+** images used dandelion.jpg and dandi2.jpg and match.jpg
 
-Predictions (className ClassDescription, percentSure) -- n03729826 matchstick 7.661554962396622
-Predictions (className ClassDescription, percentSure) -- n03729826 matchstick 7.659187167882919
-Correct ClassDescription - ['dandelion']
+Predictions (className ClassDescription, percentSure) --  n11879895 rapeseed 65.46717286109924
+Predictions (className ClassDescription, percentSure) --  n11939491 daisy 92.84752011299133
+Predictions (className ClassDescription, percentSure) --  n03729826 matchstick 93.97574663162231
+
+Predictions:  ['rapeseed', 'daisy', 'matchstick']
+Actual:  ['dandelion', 'dandelion', 'matchstick']
 
 AFTER TRANSFER LEARNING:
 
@@ -164,4 +167,26 @@ Actual:
  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
  1]
+['dandelion', 'other-weeds']
+
+SLICE IN CENTER imgs 500-600
+Predictions:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Actual:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+['dandelion', 'other-weeds']
+
+SLICE IN CENTER imgs 900-1000
+Predictions:
+[0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 0 0 0 1 1 1 0 1 0 0 0 0 0 0 0 0
+ 0 0 1 0 0 1 1 0 0 1 0 1 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 1 0 1
+ 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 1 1]
+Actual:
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
 ['dandelion', 'other-weeds']
