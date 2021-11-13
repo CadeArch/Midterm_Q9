@@ -80,12 +80,13 @@ part c)
 BASE MODEL CLASSIFIES 2 IMAGES OF DANDELIONS AS FOLLOWS:
 ** images used dandelion.jpg and dandi2.jpg and match.jpg
 
-Predictions (className ClassDescription, percentSure) --  n11879895 rapeseed 65.46717286109924
-Predictions (className ClassDescription, percentSure) --  n11939491 daisy 92.84752011299133
-Predictions (className ClassDescription, percentSure) --  n03729826 matchstick 93.97574663162231
+- Predictions (className ClassDescription, percentSure) --  n11879895 rapeseed 65.46717286109924
+- Predictions (className ClassDescription, percentSure) --  n11939491 daisy 92.84752011299133
+- Predictions (className ClassDescription, percentSure) --  n03729826 matchstick 93.97574663162231
 
-Predictions:  ['rapeseed', 'daisy', 'matchstick']
-Actual:  ['dandelion', 'dandelion', 'matchstick']
+# this is proof that the VGG16 base model doesnt know what a dandelion is i will fix this with transfer learning
+- Predictions:  ['rapeseed', 'daisy', 'matchstick']
+- Actual:  ['dandelion', 'dandelion', 'matchstick']
 
 AFTER TRANSFER LEARNING:
 
