@@ -13,6 +13,7 @@ help using vgg16 decode method - https://docs.w3cub.com/tensorflow~2.3/keras/app
                                 - https://towardsdatascience.com/how-to-use-a-pre-trained-model-vgg-for-image-classification-8dd7c4a4a517
 
 # I added the coffee mug as a gut check that my classifier was working properly
+# I downloaded the 20 photos Mario put on canvas and classified them all
 part a) after running main.py program executes and prints the following
 
 classified Coffee-Mug.jpg as coffee_mug (69.98%)
@@ -43,6 +44,7 @@ Process finished with exit code 0
 # git clone https://github.com/qqwweee/keras-yolo3.git
 # you can download the yolov3.weights online
 
+# I downloaded the 20 photos Mario put on canvas and classified them all
 part b) after running main.py program executes and prints the following
 
 classified Coffee-Mug.jpg as ['cup', 'cup', 'cup']
